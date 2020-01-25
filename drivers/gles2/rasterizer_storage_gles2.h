@@ -430,6 +430,8 @@ public:
 				BLEND_MODE_ADD,
 				BLEND_MODE_SUB,
 				BLEND_MODE_MUL,
+				BLEND_MODE_MIN,
+				BLEND_MODE_MAX,
 				BLEND_MODE_PMALPHA,
 			};
 
@@ -456,6 +458,8 @@ public:
 				BLEND_MODE_ADD,
 				BLEND_MODE_SUB,
 				BLEND_MODE_MUL,
+				BLEND_MODE_MIN,
+				BLEND_MODE_MAX,
 			};
 
 			int blend_mode;

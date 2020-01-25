@@ -1655,6 +1655,22 @@ void RasterizerCanvasGLES2::canvas_render_items(Item *p_item_list, int p_z, cons
 						glBlendFuncSeparate(GL_DST_COLOR, GL_ZERO, GL_ZERO, GL_ONE);
 					}
 				} break;
+				case RasterizerStorageGLES2::Shader::CanvasItem::BLEND_MODE_MIN: {
+					glBlendEquation(GL_MIN);
+					if (storage->frame.current_rt && storage->frame.current_rt->flags[RasterizerStorage::RENDER_TARGET_TRANSPARENT]) {
+						glBlendFuncSeparate(GL_DST_COLOR, GL_ONE, GL_DST_ALPHA, GL_ONE);
+					} else {
+						glBlendFuncSeparate(GL_DST_COLOR, GL_ONE, GL_ZERO, GL_ONE);
+					}
+				} break;
+				case RasterizerStorageGLES2::Shader::CanvasItem::BLEND_MODE_MAX: {
+					glBlendEquation(GL_MAX);
+					if (storage->frame.current_rt && storage->frame.current_rt->flags[RasterizerStorage::RENDER_TARGET_TRANSPARENT]) {
+						glBlendFuncSeparate(GL_DST_COLOR, GL_ONE, GL_DST_ALPHA, GL_ONE);
+					} else {
+						glBlendFuncSeparate(GL_DST_COLOR, GL_ZERO, GL_ZERO, GL_ONE);
+					}
+				} break;
 				case RasterizerStorageGLES2::Shader::CanvasItem::BLEND_MODE_PMALPHA: {
 					glBlendEquation(GL_FUNC_ADD);
 					if (storage->frame.current_rt && storage->frame.current_rt->flags[RasterizerStorage::RENDER_TARGET_TRANSPARENT]) {
